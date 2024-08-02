@@ -1,31 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-  </head>
-  <body>
-    <button onclick="subscribe()">Subscribe</button>
+</head>
 
-    <script>
-      async function subscribe() {
-        let sw = await navigator.serviceWorker.ready;
-        let push = await sw.pushManager.subscribe({
-          userVisibleOnly: true,
-          applicationServerKey:
-            'BGWDYQe9M09Kkr_bcwf_HeJJ4zE4OvO0JkOfJ-_R4jgCqS1ua_TgXV3tyes3kh0vd3b1o7lmDhBuMoX8XnYznBk'
-        });
-        console.log(JSON.stringify(push));
-      }
+<body>
+    <button onclick="main()">Enable notification</button>
+    <script src="scrpit.js"></script>
+</body>
 
-      if ('serviceWorker' in navigator) {
-        addEventListener('load', async () => {
-          let sw = await navigator.serviceWorker.register('./sw.js');
-          console.log(sw);
-        });
-      }
-    </script>
-  </body>
 </html>
