@@ -18,10 +18,12 @@ const registerSW = async () => {
 }
 
 const requestNotificationPermission = async () => {
-    const permission = await Notification.requestPermission();
-    console.log(permission)
-    if (permission !== 'granted') {
-        throw new Error("Notification permission not granted")
+    if (Notification.permission === 'default') {
+        const permission = await Notification.requestPermission();
+    } else if (Notification.permission === 'granted') {
+        new Notification('Notifications are already enabled.');
+    } else {
+        alert('Notifications have been denied.');
     }
 
 }

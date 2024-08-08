@@ -1,15 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+    <title>Uni-Access </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
 
+        header {
+            background-color: red;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #333;
+            overflow: hidden;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline;
+            padding: 14px 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            display: block;
+        }
+
+        nav ul li a:hover {
+            background-color: #111;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .notifications {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .notification {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+
+        .notification:last-child {
+            border-bottom: none;
+        }
+
+        .notification h4 {
+            margin: 0;
+            color: red;
+        }
+
+        .notification p {
+            margin: 5px 0 0;
+            color: #555;
+        }
+
+        .button {
+            background-color: red; /* Green background */
+            border: none; /* Remove borders */
+            color: white; /* White text */
+            padding: 15px 32px; /* Some padding */
+            text-align: center; /* Centered text */
+            text-decoration: none; /* Remove underline */
+            display: inline-block; /* Make the link a block element */
+            font-size: 16px; /* Increase font size */
+            margin: 4px 2px; /* Some margin */
+            cursor: pointer; /* Pointer/hand icon */
+            border-radius: 12px; /* Rounded corners */
+            transition-duration: 0.4s; /* Transition effect duration */
+        }
+
+        .button:hover {
+            background-color: white; /* White background on hover */
+            color: black; /* Black text on hover */
+            border: 2px solid red; /* Green border on hover */
+        }
+
+
+    </style>
+</head>
 <body>
-    <button onclick="main()">Enable notification</button>
+    <header>
+        <h1>Uni-Access</h1>
+        <p></p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#">Home      Features </a></li>
+
+        </ul>
+    </nav>
+    <div class="container">
+        <h2>Notifications</h2>
+        <div class="notifications">
+            <div class="notification">
+                <h4>System Update</h4>
+                <p>Your system will undergo maintenance from 2 AM to 4 AM.</p>
+            </div>
+            <div class="notification">
+                <h4>New Feature Released</h4>
+                <p>We have introduced a new feature to enhance your user experience.</p>
+            </div>
+            <div class="notification">
+                <h4>Security Alert</h4>
+                <p>Please update your password to comply with the new security policies.</p>
+            </div>
+        </div>
+    </div>
+    <button class="button" onclick="main()">Enable notification</button>
     <script src="scrpit.js"></script>
 </body>
-
 </html>
+

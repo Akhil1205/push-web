@@ -23,18 +23,41 @@ app.get("/", (req, res) => {
     res.send("Hello world");
 }) 
 
-const subDatabse = [];
+const subDatabase = [];
+
+const options = {
+    proxy:'Uniaccess',
+    // topic :'Uniacccess',
+    // agent :'Uniaccess'
+}
 
 
 app.post("/save-subscription", (req, res) => {
-    subDatabse.push(req.body);
-    res.json({ status: "Success", message: "Subscription saved!" })
-})
+    try {
+        const subscription = req.body;
+        // Basic validation (expand as needed)
+        subDatabase.push(subscription);
+        console.log("New subscription added:", subscription); 
+        res.json({ status: "Success", message: "Subscription saved!" });
+    } catch (error) {
+        res.status(500).json({ status: "Error", message: "An error occurred" });
+    }
+});
 
 app.get("/send-notification", (req, res) => {
-    webpush.sendNotification(subDatabse[0], "Hello world from node app");
-    res.json({ "statue": "Success", "message": "Message sent to push service" });
-})
+    if (subDatabase.length === 0) {
+        return res.status(400).json({ status: "Error", message: "No subscriptions found" });
+    }
+    const notificationPayload = JSON.stringify({ title: "Hello World", body: "The Kelsa request has been approved" });
+
+    webpush.sendNotification(subDatabase[0], notificationPayload)
+        .then(() => {
+            res.json({ status: "Success", message: "Message sent to push service" });
+        })
+        .catch(error => {
+            res.status(500).json({ status: "Error", message: error});
+        });
+});
 
 app.listen(port, () => {
     console.log("Server running on port 3000!");
